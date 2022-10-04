@@ -4,39 +4,15 @@ export ENDPOINT_NAME=https://$1
 export REGION=us-east-1
 export CONTENT_TYPE=application/json
 export PAYLOAD='{"inputs": "I am super happy right now."}'
-
+export USERS=10
+export WORKERS=30
+export RUN_TIME=1m
 #replace with the locust script that you are testing, this is the locust_script that will be used to make the InvokeEndpoint API calls. 
 export SCRIPT=locust_script.py
 #make sure you are in a virtual environment
 #. ./venv/bin/activate
-locust -f $SCRIPT -H $ENDPOINT_NAME --master --expect-workers=30 -u 10 -t 1m --csv results --headless &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
-locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
+locust -f $SCRIPT -H $ENDPOINT_NAME --master --expect-workers $WORKERS -u $USERS -t $RUN_TIME --csv results --headless &
+for (( c=1; c<=$WORKERS; c++ ))
+do 
+    locust -f $SCRIPT -H $ENDPOINT_NAME --worker --master-host=localhost &
+done
