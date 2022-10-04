@@ -4,8 +4,8 @@ export ENDPOINT_NAME=https://$1
 export REGION=us-east-1
 export CONTENT_TYPE=application/json
 export PAYLOAD='{"inputs": "I am super happy right now."}'
-export USERS=10
-export WORKERS=30
+export USERS=240
+export WORKERS=60
 export RUN_TIME=1mg
 export LOCUST_UI=false # Use Locust UI
 
