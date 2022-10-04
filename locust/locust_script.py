@@ -6,7 +6,6 @@ from locust import task, events
 from locust.contrib.fasthttp import FastHttpUser
 import os
 
-endpoint_name = os.environ["ENDPOINT_NAME"]
 region = os.environ["REGION"]
 content_type = os.environ["CONTENT_TYPE"]
 payload = os.environ["PAYLOAD"]
@@ -24,7 +23,6 @@ class BotoClient:
 
         self.sagemaker_client = boto3.client('sagemaker-runtime',config=config)
         self.endpoint_name = host.split('/')[-1]
-        #self.endpoint_name = endpoint_name
         self.region = region
         self.content_type = content_type
         self.payload = payload
@@ -49,7 +47,6 @@ class BotoClient:
                 ContentType=self.content_type
             )
             response_body = response["Body"].read()
-            print(response_body)
         except Exception as e:
             request_meta['exception'] = e
 

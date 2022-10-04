@@ -1,9 +1,9 @@
-#replace with your endpoint name
-export ENDPOINT_NAME=https://huggingface-pytorch-inference-2022-07-25-17-21-31-881
+#replace with your endpoint name in format https://<<endpoint-name>>
+export ENDPOINT_NAME=https://huggingface-pytorch-inference-2022-10-04-00-07-12-419
 
 export REGION=us-east-1
 export CONTENT_TYPE=application/json
-export PAYLOAD={"inputs": "I am super happy right now."}
+export PAYLOAD='{"inputs": "I am super happy right now."}'
 
 #replace with the locust script that you are testing, this is the locust_script that will be used to make the InvokeEndpoint API calls. 
 export SCRIPT=locust_script.py
