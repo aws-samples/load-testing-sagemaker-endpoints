@@ -1,5 +1,5 @@
 #replace with your endpoint name in format https://<<endpoint-name>>
-export ENDPOINT_NAME=https://huggingface-pytorch-inference-2022-10-04-00-07-12-419
+export ENDPOINT_NAME=https://$1
 
 export REGION=us-east-1
 export CONTENT_TYPE=application/json
