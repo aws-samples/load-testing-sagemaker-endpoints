@@ -1,11 +1,21 @@
-## My Project
+## Load test a SageMaker Endpoint
 
-TODO: Fill this README out!
+`locust` folder contains `distributed.sh` which kicks of the distrabuted locust load test. 
 
-Be sure to:
+Steps to run a load test:
+1. Update `distributed.sh` ENV variables: 
+```
+export REGION=us-east-1
+export CONTENT_TYPE=application/json
+export PAYLOAD='{"inputs": "I am super happy right now."}'
+export USERS=10
+export WORKERS=30
+export RUN_TIME=1m
+```
 
-* Change the title in this README
-* Edit your repository description on GitHub
+2. `chmod +x distributed.sh`
+3. `./distributed.sh endpoint-name`
+
 
 ## Security
 
