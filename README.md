@@ -1,6 +1,6 @@
 ## Load test a SageMaker Endpoint
 
-`locust` folder contains `distributed.sh` which kicks of the distrabuted locust load test. 
+`locust` folder contains `distributed.sh` which kicks of the [distributed locust](https://docs.locust.io/en/stable/running-distributed.html) load test. 
 
 Steps to run a load test:
 1. Update `distributed.sh` ENV variables: 
