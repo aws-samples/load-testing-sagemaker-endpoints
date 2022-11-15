@@ -1,5 +1,9 @@
 ## Load test a SageMaker Endpoint
 
+## Setup
+
+To get started have an EC2 instance up and running, in the case of this example we used an ml.c5.18xlarge instance. You can launch multiple EC2 instances to further get client side power to ramp up traffic. This script is not just EC2 reliant, if you want you can run this on EKS or even a SageMaker Notebook Instance, just be aware of the client compute power you have so that you do not get throttled on that end. For launching and setting up an EC2 instance follow this [documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html).
+
 `locust` folder contains `distributed.sh` which kicks of the [distributed locust](https://docs.locust.io/en/stable/running-distributed.html) load test. 
 
 Steps to run a load test:
