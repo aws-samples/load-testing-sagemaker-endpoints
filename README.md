@@ -1,4 +1,4 @@
-## Load test a SageMaker Endpoint
+# Load Testing SageMaker Endpoints
 
 ## Setup
 
