@@ -6,6 +6,8 @@ To get started have an EC2 instance up and running, in the case of this example 
 
 `locust` folder contains `distributed.sh` which kicks of the [distributed locust](https://docs.locust.io/en/stable/running-distributed.html) load test. 
 
+## Load Test
+
 Steps to run a load test:
 1. Update `distributed.sh` ENV variables: 
 ```
