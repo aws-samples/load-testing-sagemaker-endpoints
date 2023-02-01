@@ -1,6 +1,4 @@
-# Load Testing SageMaker Endpoints
-
-## [Best practices for load testing Amazon SageMaker real-time inference endpoints](https://aws.amazon.com/blogs/machine-learning/best-practices-for-load-testing-amazon-sagemaker-real-time-inference-endpoints/)
+# [Best practices for load testing Amazon SageMaker real-time inference endpoints](https://aws.amazon.com/blogs/machine-learning/best-practices-for-load-testing-amazon-sagemaker-real-time-inference-endpoints/)
 
 ## Setup
 
