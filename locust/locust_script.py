@@ -1,29 +1,28 @@
+import json
+import logging
+import os
 import time
+
 import boto3
 from botocore.config import Config
-import json
-from locust import task, events
 from locust.contrib.fasthttp import FastHttpUser
-import os
+
+from locust import task, events
 
 region = os.environ["REGION"]
 content_type = os.environ["CONTENT_TYPE"]
 payload = os.environ["PAYLOAD"]
 
+
 class BotoClient:
     def __init__(self, host):
-        
-        #Consider removing retry logic to get accurate picture of failure in locust
+        # Consider removing retry logic to get accurate picture of failure in locust
         config = Config(
-                        retries = {
-                        'max_attempts': 0,
-                        'mode': 'standard'
-                        }
-                    )
+            region_name=region, retries={"max_attempts": 0, "mode": "standard"}
+        )
 
-        self.sagemaker_client = boto3.client('sagemaker-runtime',config=config)
-        self.endpoint_name = host.split('/')[-1]
-        self.region = region
+        self.sagemaker_client = boto3.client("sagemaker-runtime", config=config)
+        self.endpoint_name = host.split("/")[-1]
         self.content_type = content_type
         self.payload = payload
 
@@ -39,29 +38,33 @@ class BotoClient:
             "exception": None,
         }
         start_perf_counter = time.perf_counter()
-   
+
         try:
             response = self.sagemaker_client.invoke_endpoint(
                 EndpointName=self.endpoint_name,
-                Body=self.payload,
-                ContentType=self.content_type
+                Body=json.dumps(eval(self.payload)),
+                ContentType=self.content_type,
             )
-            response_body = response["Body"].read()
+            logging.info(response["Body"].read())
         except Exception as e:
-            request_meta['exception'] = e
+            request_meta["exception"] = e
 
-        request_meta["response_time"] = (time.perf_counter() - start_perf_counter) * 1000
+        request_meta["response_time"] = (
+            time.perf_counter() - start_perf_counter
+        ) * 1000
 
         events.request.fire(**request_meta)
 
+
 class BotoUser(FastHttpUser):
     abstract = True
+
     def __init__(self, env):
         super().__init__(env)
         self.client = BotoClient(self.host)
 
+
 class MyUser(BotoUser):
     @task
     def send_request(self):
-
         self.client.send()
