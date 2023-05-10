@@ -42,7 +42,7 @@ class BotoClient:
         try:
             response = self.sagemaker_client.invoke_endpoint(
                 EndpointName=self.endpoint_name,
-                Body=json.dumps(eval(self.payload)),
+                Body=self.payload,
                 ContentType=self.content_type,
             )
             logging.info(response["Body"].read())
