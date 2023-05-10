@@ -19,7 +19,7 @@ export SCRIPT=locust_script.py
 if $LOCUST_UI ; then
     locust -f $SCRIPT -H $ENDPOINT_NAME --master --expect-workers $WORKERS -u $USERS -t $RUN_TIME --csv results &
 else
-locust -f $SCRIPT -H $ENDPOINT_NAME --master --expect-workers $WORKERS -u $USERS -t $RUN_TIME --csv results --headless &
+    locust -f $SCRIPT -H $ENDPOINT_NAME --master --expect-workers $WORKERS -u $USERS -t $RUN_TIME --csv results --headless &
 fi
 
 for (( c=1; c<=$WORKERS; c++ ))
