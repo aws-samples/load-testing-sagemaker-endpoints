@@ -23,7 +23,6 @@ Steps to run a load test:
 3. Run `chmod +x distributed.sh`
 4. Run `./distributed.sh endpoint-name`
 
-
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
