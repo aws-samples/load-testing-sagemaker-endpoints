@@ -11,13 +11,13 @@ To get started have an EC2 instance up and running, in the case of this example 
 Steps to run a load test:
 
 1. Activate Python environment, and `pip install -r requirements.txt`.
-2. Update `distributed.sh` ENV variables: 
+2. Update `distributed.sh` ENV variables, to increase traffic tune users and workers parameters (define users as a multiple of workers): 
     ```
     export REGION=us-east-1
     export CONTENT_TYPE=application/json
     export PAYLOAD='{"inputs": "I am super happy right now."}'
-    export USERS=10
-    export WORKERS=30
+    export USERS=30
+    export WORKERS=10
     export RUN_TIME=1m
     ```
 3. Run `chmod +x distributed.sh`
