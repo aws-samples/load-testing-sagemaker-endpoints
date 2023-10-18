@@ -6,7 +6,7 @@ export CONTENT_TYPE=application/json
 export PAYLOAD='{"inputs": "I am super happy right now."}'
 export USERS=240
 export WORKERS=60
-export RUN_TIME=1mg
+export RUN_TIME=1m
 export LOCUST_UI=false # Use Locust UI
 
 
